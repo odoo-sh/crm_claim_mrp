@@ -1,0 +1,30 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!-- Copyright 2022 Sodexis
+License OPL-1 (See LICENSE file for full copyright and licensing details). -->
+
+<odoo>
+
+    <record id="mrp_production_form_view" model="ir.ui.view">
+        <field name="name">mrp.production.form.claim</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="claim_id" attrs="{'invisible':[('claim_id', '=', False)]}" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="mrp_production_form_view_group" model="ir.ui.view">
+        <field name="name">mrp.production.form.claim.group</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="crm_claim_mrp.mrp_production_form_view"/>
+        <field name="groups_id" eval="[(6, 0, [ref('crm_claim.group_crm_claim_manager')])]" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='claim_id']" position="attributes">
+                <attribute name="readonly">False</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

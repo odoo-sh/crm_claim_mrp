@@ -1,0 +1,20 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!-- Copyright 2022 Sodexis
+License OPL-1 (See LICENSE file for full copyright and licensing details). -->
+
+<odoo>
+
+    <record id="crm_case_claims_form_view" model="ir.ui.view">
+        <field name="name">crm.claims.form.mrp</field>
+        <field name="model">crm.claim</field>
+        <field name="inherit_id" ref="crm_claim.crm_case_claims_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_picking']" position="after">
+                <button type="object" name="action_view_production" class="oe_stat_button" icon="fa-building-o" groups="crm_claim.group_crm_claim_manager,crm_claim.group_crm_claim_user">
+                    <field name="mrp_count" widget="statinfo" string="Manufacturing Order(s)" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
